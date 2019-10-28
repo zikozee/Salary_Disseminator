@@ -12,7 +12,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class MoneyBagServiceImplTest {
@@ -41,6 +41,7 @@ class MoneyBagServiceImplTest {
 
     @Test
     void findByBank() {
+        verify(moneyBagRepository,never()).findByBank(anyString());
     }
 
     @Test
@@ -53,6 +54,7 @@ class MoneyBagServiceImplTest {
 
     @Test
     void save() {
+        verify(moneyBagRepository,never()).save(any());
     }
 
     @Test

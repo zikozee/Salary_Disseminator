@@ -90,6 +90,7 @@ class MoneyBagControllerTest {
 
         assertEquals(0, moneyBagService.findAll().size());
 
+        verify(moneyBagService, never()).findById(anyLong());
     }
 
 }
