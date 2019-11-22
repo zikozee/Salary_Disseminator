@@ -15,7 +15,7 @@ public interface MoneyBagService {
 
     MoneyBag findById(Long id);
 
-    MoneyBag save(MoneyBag moneyBag);
+    void save(MoneyBag moneyBag);
 
     void delete(MoneyBag moneyBag);
 

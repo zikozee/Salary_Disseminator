@@ -1,6 +1,8 @@
 package com.zikozee.salarydisseminator.controller;
 
 import com.zikozee.salarydisseminator.model.MoneyBag;
+import com.zikozee.salarydisseminator.model.enumModel.BankingAccountClass;
+import com.zikozee.salarydisseminator.model.enumModel.BudgetType;
 import com.zikozee.salarydisseminator.service.MoneyBagService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -37,7 +39,7 @@ class MoneyBagControllerTest {
     @BeforeEach
     void setUp() {
         moneyBags = new HashSet<>();
-        bag = new MoneyBag(1L,"budget", "expenses", "access bank", "savings", 50000);
+        bag = new MoneyBag(1L,"budget", BudgetType.EXPENSES, "access bank", BankingAccountClass.SAVINGS, 50000);
         moneyBags.add(bag);
 
         mockMvc = MockMvcBuilders
@@ -82,7 +84,7 @@ class MoneyBagControllerTest {
 
     @Test
     void saveEmployee() throws Exception {
-        moneyBags.add(new MoneyBag(2L,"budget", "expenses", "access bank", "savings", 20000));
+        moneyBags.add(new MoneyBag(2L,"budget", BudgetType.EXPENSES, "access bank", BankingAccountClass.SAVINGS, 20000));
 
         when(moneyBagService.findAll()).thenReturn(moneyBags);
         assertEquals(2, moneyBagService.findAll().size());

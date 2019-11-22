@@ -42,8 +42,8 @@ public class MoneyBagServiceImpl implements MoneyBagService {
     }
 
     @Override
-    public MoneyBag save(MoneyBag moneyBag) {
-        return moneyBagRepository.save(moneyBag);
+    public void save(MoneyBag moneyBag) {
+        moneyBagRepository.save(moneyBag);
     }
 
     @Override

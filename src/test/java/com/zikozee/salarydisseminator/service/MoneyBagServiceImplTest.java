@@ -1,6 +1,8 @@
 package com.zikozee.salarydisseminator.service;
 
 import com.zikozee.salarydisseminator.model.MoneyBag;
+import com.zikozee.salarydisseminator.model.enumModel.BankingAccountClass;
+import com.zikozee.salarydisseminator.model.enumModel.BudgetType;
 import com.zikozee.salarydisseminator.repo.MoneyBagRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,7 +30,7 @@ class MoneyBagServiceImplTest {
     @BeforeEach
     void setUp() {
         moneyBags = new HashSet<>();
-        moneyBags.add(new MoneyBag(1L,"food", "expenses", "access bank", "savings", 5000));
+        moneyBags.add(new MoneyBag(1L,"food", BudgetType.EXPENSES, "access bank", BankingAccountClass.SAVINGS, 5000));
     }
 
     @Test

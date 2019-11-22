@@ -45,7 +45,7 @@
             <td th:text="${temp.budgetType}"></td>
             <td th:text="${temp.bank}"></td>
             <td th:text="${temp.bankingAccountClass}"></td>
-            <td th:text="${temp.amount}"></td>
+            <td th:text="${#numbers.formatDecimal(temp.amount, 0, 'COMMA', 2, 'POINT')}"></td>
 
             <!-- Add "update" button link-->
             <td>

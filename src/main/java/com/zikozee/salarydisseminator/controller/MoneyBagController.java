@@ -19,8 +19,8 @@ import java.util.Map;
 public class MoneyBagController {
 
     private final MoneyBagService moneyBagService;
-    private Map<String,String> budgetChooser = new HashMap<>();
-    private Map<String,String> bankType = new HashMap<>();
+    private Map<String,Enum> budgetChooser = new HashMap<>();
+    private Map<String,Enum> bankType = new HashMap<>();
 
     public MoneyBagController(MoneyBagService moneyBagService) {
         this.moneyBagService = moneyBagService;
@@ -82,12 +82,12 @@ public class MoneyBagController {
 
     @PostConstruct
     public void initData(){
-        budgetChooser.put("Expenses", BudgetType.EXPENSES.toString());
-        budgetChooser.put("Savings",  BudgetType.SAVINGS.toString());
-        budgetChooser.put("Spend Later", BudgetType.SPEND_LATER.toString());
-        budgetChooser.put("Miscellaneous",  BudgetType.MISCELLANEOUS.toString());
+        budgetChooser.put("Expenses", BudgetType.EXPENSES);
+        budgetChooser.put("Savings",  BudgetType.SAVINGS);
+        budgetChooser.put("Spend Later", BudgetType.SPEND_LATER);
+        budgetChooser.put("Miscellaneous",  BudgetType.MISCELLANEOUS);
 
-        bankType.put("Current", BankingAccountClass.CURRENT.toString());
-        bankType.put("Savings",  BankingAccountClass.SAVINGS.toString());
+        bankType.put("Current", BankingAccountClass.CURRENT);
+        bankType.put("Savings",  BankingAccountClass.SAVINGS);
     }
 }

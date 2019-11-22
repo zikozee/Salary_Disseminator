@@ -1,11 +1,10 @@
 package com.zikozee.salarydisseminator.model;
 
+import com.zikozee.salarydisseminator.model.enumModel.BankingAccountClass;
+import com.zikozee.salarydisseminator.model.enumModel.BudgetType;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter @Setter
 @ToString @AllArgsConstructor @NoArgsConstructor
@@ -14,9 +13,16 @@ public class MoneyBag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
-    private String budgetType;
+
+    @Enumerated(EnumType.STRING)
+    private BudgetType budgetType;
+
     private String bank;
-    private String bankingAccountClass;
+
+    @Enumerated(EnumType.STRING)
+    private BankingAccountClass bankingAccountClass;
+
     private double amount;
 }
