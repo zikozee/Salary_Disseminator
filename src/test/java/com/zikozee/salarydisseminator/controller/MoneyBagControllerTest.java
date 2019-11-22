@@ -60,6 +60,7 @@ class MoneyBagControllerTest {
 
     @Test
     void showFormForAdd() throws Exception {
+
         mockMvc.perform(get("/showFormForAdd"))
                 .andExpect(status().isOk())
                 .andExpect(model().attributeExists("aMoneyBag", "budgetChooser", "bankType"))
@@ -68,8 +69,15 @@ class MoneyBagControllerTest {
 
     @Test
     void showFormForUpdate() throws Exception {
+        MoneyBag moneyBag = new MoneyBag();
+        moneyBag.setId(1L);
 
-       verifyNoMoreInteractions(moneyBagService);
+        when(moneyBagService.findById(anyLong())).thenReturn(moneyBag);
+
+        mockMvc.perform(get("/showFormForUpdate?moneyBagId=1"))
+                .andExpect(status().isOk())
+                .andExpect(model().attributeExists("aMoneyBag", "budgetChooser", "bankType"))
+                .andExpect(view().name("moneyBaggee/addForm"));
     }
 
     @Test
@@ -88,9 +96,13 @@ class MoneyBagControllerTest {
         when(moneyBagService.findAll()).thenReturn(moneyBags);
         moneyBags.remove(bag);
 
+        mockMvc.perform(get("/delete?moneyBagId=1"))
+                .andExpect(status().is3xxRedirection());
+
         assertEquals(0, moneyBagService.findAll().size());
 
         verify(moneyBagService, never()).findById(anyLong());
+
     }
 
 }
